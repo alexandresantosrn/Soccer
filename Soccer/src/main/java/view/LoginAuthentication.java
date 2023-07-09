@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import connection.ConnectionFactory;
+import dao.OrganizadorDAO;
 
 public class LoginAuthentication {
 
@@ -21,9 +22,11 @@ public class LoginAuthentication {
 	}
 
 	private static void autenticar(String login, String password) {
-		
-		ConnectionFactory.getConnection();
-		
+
+		OrganizadorDAO organizadorDAO = new OrganizadorDAO();
+
+		organizadorDAO.getOrganizadorByLoginSenha(login, password);
+
 	}
 
 }

@@ -1,0 +1,17 @@
+-- Criando tabela Pessoa
+
+CREATE TABLE Pessoa (
+    idPessoa INT PRIMARY KEY,
+    nome VARCHAR(255),
+    data_nascimento DATE,
+    cpf VARCHAR(14)
+);
+
+-- Criando tabela Organizador
+
+CREATE TABLE Organizador (
+    idPessoa INT,
+    login VARCHAR(255),
+    senha VARCHAR(255),
+    FOREIGN KEY (idPessoa) REFERENCES Pessoa(idPessoa)
+);

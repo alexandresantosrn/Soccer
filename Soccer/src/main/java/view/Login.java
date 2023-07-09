@@ -11,7 +11,7 @@ public class Login {
 		int option = 100;
 		input = new Scanner(System.in);
 
-		while (option != 0) {
+		while (option != 0 && option != 1) {
 
 			System.out.println("---------------------------------------------------------------");
 			System.out.println("Bem vindo ao sistema Soccer. Informe abaixo seu login e senha.");
