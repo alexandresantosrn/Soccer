@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import controller.LoginAuthentication;
+
 public class Login {
 
 	private static Scanner input;

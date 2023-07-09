@@ -15,6 +15,7 @@ public class App {
 			System.out.println("Informe a opção desejada: ");
 			System.out.println("1 - Consultar Jogador");
 			System.out.println("2 - Consultar Treinador");
+			System.out.println("3 - Consultar Time");
 			System.out.println("0 - Sair");
 			System.out.print("Opção: ");
 			option = input.nextInt();
@@ -22,7 +23,7 @@ public class App {
 			switch (option) {
 
 			case 1:
-
+				
 				break;
 
 			case 0:

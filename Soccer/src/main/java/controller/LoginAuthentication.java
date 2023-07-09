@@ -1,9 +1,10 @@
-package view;
+package controller;
 
 import java.util.Scanner;
 
 import dao.OrganizadorDAO;
 import model.Organizador;
+import view.App;
 
 public class LoginAuthentication {
 

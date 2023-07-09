@@ -15,3 +15,38 @@ CREATE TABLE Organizador (
     senha VARCHAR(255),
     FOREIGN KEY (idPessoa) REFERENCES Pessoa(idPessoa)
 );
+
+-- Insert do Organizador
+
+INSERT INTO Pessoa (idPessoa, nome, data_nascimento, cpf)
+VALUES (1, 'Alexandre Dantas', '1984-11-24', '05641479403');
+
+INSERT INTO Organizador (idPessoa, login, senha)
+VALUES (1, 'alexandre', '123456');
+
+-- Criando tabela Jogador
+
+CREATE TABLE Jogador (
+    idPessoa INT,
+    numero_camisa INT,
+    FOREIGN KEY (idPessoa) REFERENCES Pessoa(idPessoa)
+);
+
+-- Criando tabela de Time
+
+CREATE TABLE Time (
+    idTime INT PRIMARY KEY,
+    nome VARCHAR(255)
+);
+
+-- Criando tabela Jogador_joga_time
+
+CREATE TABLE Jogador_joga_time (
+    idPessoa INT,
+    idTime INT,
+    data_inicio DATE,
+    data_fim DATE,
+    FOREIGN KEY (idPessoa) REFERENCES Jogador(idPessoa),
+    FOREIGN KEY (idTime) REFERENCES Time(idTime)
+);
+
