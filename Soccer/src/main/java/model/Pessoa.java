@@ -2,9 +2,30 @@ package model;
 
 public class Pessoa {
 
+	int idPessoa;
 	String nome;
 	String dataNascimento;
 	String cpf;
+
+	public Pessoa() {
+
+	}
+
+	public Pessoa(int idPessoa, String nome, String dataNascimento, String cpf) {
+		super();
+		this.idPessoa = idPessoa;
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.cpf = cpf;
+	}
+
+	public int getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(int idPessoa) {
+		this.idPessoa = idPessoa;
+	}
 
 	public String getNome() {
 		return nome;

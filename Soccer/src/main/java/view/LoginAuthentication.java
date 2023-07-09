@@ -2,8 +2,8 @@ package view;
 
 import java.util.Scanner;
 
-import connection.ConnectionFactory;
 import dao.OrganizadorDAO;
+import model.Organizador;
 
 public class LoginAuthentication {
 
@@ -23,10 +23,20 @@ public class LoginAuthentication {
 
 	private static void autenticar(String login, String password) {
 
+		Organizador organizador = new Organizador();
 		OrganizadorDAO organizadorDAO = new OrganizadorDAO();
 
-		organizadorDAO.getOrganizadorByLoginSenha(login, password);
+		organizador = organizadorDAO.getOrganizadorByLoginSenha(login, password);
 
+		if (organizador != null) {
+			System.out.println("Achou!");
+		}
+
+		else {
+			System.out.println("Login ou Senha inválidos!");
+			System.out.println("Informe novamente os dados para autenticação.");
+			realizarLogin();
+		}
 	}
 
 }
