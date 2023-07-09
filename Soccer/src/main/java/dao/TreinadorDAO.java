@@ -10,10 +10,10 @@ import model.Treinador;
 public class TreinadorDAO {
 
 	public Treinador getTreinadorByNomeTime(String nome, String equipe) {
-		String sql = "SELECT tr.idPessoa, p.nome AS nome_treinador, t.nome AS nome_equipe " + "FROM Treinador tr "
-				+ "INNER JOIN Pessoa p ON tr.idPessoa = p.idPessoa "
-				+ "INNER JOIN Treinador_treina_time ttt ON tr.idPessoa = ttt.idPessoa "
-				+ "INNER JOIN Time t ON ttt.idTime = t.idTime " + "WHERE p.nome = ? " + "AND t.nome = ? "
+		String sql = "SELECT tr.Pessoa_idPessoa as idPessoa, p.nome AS nome_treinador, t.nome AS nome_equipe " + "FROM Treinador tr "
+				+ "INNER JOIN Pessoa p ON tr.Pessoa_idPessoa = p.idPessoa "
+				+ "INNER JOIN Treinador_treina_time ttt ON tr.Pessoa_idPessoa = ttt.Treinador_pessoa_idPessoa "
+				+ "INNER JOIN Time t ON ttt.Time_idTime = t.idTime " + "WHERE p.nome = ? " + "AND t.nome = ? "
 				+ "AND ttt.data_fim is null";
 
 		try {

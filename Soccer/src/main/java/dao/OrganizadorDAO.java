@@ -27,7 +27,7 @@ public class OrganizadorDAO {
 
 			// Iterando sobre os resultados da consulta
 			while (resultSet.next()) {
-				int idPessoa1 = resultSet.getInt("idPessoa");
+				int idPessoa1 = resultSet.getInt("Pessoa_idPessoa");
 				String login1 = resultSet.getString("login");
 				String senha1 = resultSet.getString("senha");
 

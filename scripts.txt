@@ -137,7 +137,7 @@ VALUES (16, 10), (17, 7), (18, 9), (19, 5), (20, 2);
 -- Inserindo times e jogadores
 
 -- Time 1
-INSERT INTO Time (idTime, nome) VALUES (1, 'Time 1');
+INSERT INTO Time (idTime, nome) VALUES (1, 'ABC');
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (1, 1, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (2, 1, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (3, 1, CURDATE());
@@ -145,7 +145,7 @@ INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (4, 1, CURD
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (5, 1, CURDATE());
 
 -- Time 2
-INSERT INTO Time (idTime, nome) VALUES (2, 'Time 2');
+INSERT INTO Time (idTime, nome) VALUES (2, 'America');
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (6, 2, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (7, 2, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (8, 2, CURDATE());
@@ -153,7 +153,7 @@ INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (9, 2, CURD
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (10, 2, CURDATE());
 
 -- Time 3
-INSERT INTO Time (idTime, nome) VALUES (3, 'Time 3');
+INSERT INTO Time (idTime, nome) VALUES (3, 'Globo');
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (11, 3, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (12, 3, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (13, 3, CURDATE());
@@ -161,12 +161,29 @@ INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (14, 3, CUR
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (15, 3, CURDATE());
 
 -- Time 4
-INSERT INTO Time (idTime, nome) VALUES (4, 'Time 4');
+INSERT INTO Time (idTime, nome) VALUES (4, 'Alecrim');
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (16, 4, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (17, 4, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (18, 4, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (19, 4, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (20, 4, CURDATE());
+
+
+-- Criando tabela de treinador/time
+
+CREATE TABLE Treinador (
+    idPessoa INT,
+    FOREIGN KEY (idPessoa) REFERENCES Pessoa(idPessoa)
+);
+
+CREATE TABLE Treinador_treina_time (
+    idPessoa INT,
+    idTime INT,
+    data_inicio DATE,
+    data_fim DATE,
+    FOREIGN KEY (idPessoa) REFERENCES Treinador(idPessoa),
+    FOREIGN KEY (idTime) REFERENCES Time(idTime)
+);
 
 -- Inserindo pessoas/treinadores
 
@@ -212,6 +229,18 @@ VALUES (23, 3, '2021-03-01', NULL);
 -- Inserção do treinador 4 no time 4
 INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
 VALUES (24, 4, '2021-04-01', NULL);
+
+-- Criando tabela de Campeonato
+
+CREATE TABLE Campeonato (
+    idCampeonato INT,
+    idPessoa INT,
+    nome VARCHAR(255),
+    FOREIGN KEY (idPessoa) REFERENCES Organizador(idPessoa)
+);
+
+-- Criar campeonato
+INSERT INTO Campeonato (idCampeonato, idPessoa, nome) VALUES (1, 100, 'Brasileirao serie A');
 
 
 
