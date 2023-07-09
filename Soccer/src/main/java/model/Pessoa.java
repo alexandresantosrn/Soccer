@@ -12,7 +12,6 @@ public class Pessoa {
 	}
 
 	public Pessoa(int idPessoa, String nome, String dataNascimento, String cpf) {
-		super();
 		this.idPessoa = idPessoa;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;

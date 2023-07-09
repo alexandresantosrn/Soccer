@@ -29,7 +29,8 @@ public class LoginAuthentication {
 		organizador = organizadorDAO.getOrganizadorByLoginSenha(login, password);
 
 		if (organizador != null) {
-			System.out.println("Achou!");
+			System.out.println("Usuário: " + organizador.getLogin() + " autenticado com sucesso!");
+			App.exibirMenu();
 		}
 
 		else {
