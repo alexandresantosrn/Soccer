@@ -19,10 +19,10 @@ CREATE TABLE Organizador (
 -- Insert do Organizador
 
 INSERT INTO Pessoa (idPessoa, nome, data_nascimento, cpf)
-VALUES (1, 'Alexandre Dantas', '1984-11-24', '05641479403');
+VALUES (100, 'Alexandre Dantas', '1984-11-24', '05641479403');
 
 INSERT INTO Organizador (idPessoa, login, senha)
-VALUES (1, 'alexandre', '123456');
+VALUES (100, 'alexandre', '123456');
 
 -- Criando tabela Jogador
 
@@ -49,4 +49,122 @@ CREATE TABLE Jogador_joga_time (
     FOREIGN KEY (idPessoa) REFERENCES Jogador(idPessoa),
     FOREIGN KEY (idTime) REFERENCES Time(idTime)
 );
+
+-- Insert de Pessoas/Jogadores
+
+-- Pessoas do Time 1
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (1, 'Cristiano Ronaldo', '12345678901', '1985-02-05');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (2, 'Lionel Messi', '23456789012', '1987-06-24');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (3, 'Neymar Jr.', '34567890123', '1992-02-05');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (4, 'Sergio Ramos', '45678901234', '1986-03-30');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (5, 'Kevin De Bruyne', '56789012345', '1991-06-28');
+
+-- Pessoas do Time 2
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (6, 'Robert Lewandowski', '67890123456', '1988-08-21');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (7, 'Mohamed Salah', '78901234567', '1992-06-15');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (8, 'Harry Kane', '89012345678', '1993-07-28');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (9, 'Kylian Mbappé', '90123456789', '1998-12-20');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (10, 'Virgil van Dijk', '01234567890', '1991-07-08');
+
+-- Pessoas do Time 3
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (11, 'Antoine Griezmann', '12345678901', '1991-03-21');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (12, 'Manuel Neuer', '23456789012', '1986-03-27');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (13, 'Karim Benzema', '34567890123', '1987-12-19');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (14, 'Jan Oblak', '45678901234', '1993-01-07');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (15, 'Eden Hazard', '56789012345', '1991-01-07');
+
+-- Pessoas do Time 4
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (16, 'Alisson Becker', '67890123456', '1992-10-02');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (17, 'Sergio Agüero', '78901234567', '1988-06-02');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (18, 'Thiago Silva', '89012345678', '1984-09-22');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (19, 'David Alaba', '90123456789', '1992-06-24');
+
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (20, 'Paul Pogba', '01234567890', '1993-03-15');
+
+-- Insert de Jogadores
+
+-- Jogadores do Time 1
+INSERT INTO Jogador (idPessoa, numero_camisa)
+VALUES (1, 10), (2, 7), (3, 9), (4, 5), (5, 2);
+
+-- Jogadores do Time 2
+INSERT INTO Jogador (idPessoa, numero_camisa)
+VALUES (6, 10), (7, 7), (8, 9), (9, 5), (10, 2);
+
+-- Jogadores do Time 3
+INSERT INTO Jogador (idPessoa, numero_camisa)
+VALUES (11, 10), (12, 7), (13, 9), (14, 5), (15, 2);
+
+-- Jogadores do Time 4
+INSERT INTO Jogador (idPessoa, numero_camisa)
+VALUES (16, 10), (17, 7), (18, 9), (19, 5), (20, 2);
+
+-- Inserindo times e jogadores
+
+-- Time 1
+INSERT INTO Time (idTime, nome) VALUES (1, 'Time 1');
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (1, 1, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (2, 1, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (3, 1, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (4, 1, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (5, 1, CURDATE());
+
+-- Time 2
+INSERT INTO Time (idTime, nome) VALUES (2, 'Time 2');
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (6, 2, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (7, 2, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (8, 2, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (9, 2, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (10, 2, CURDATE());
+
+-- Time 3
+INSERT INTO Time (idTime, nome) VALUES (3, 'Time 3');
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (11, 3, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (12, 3, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (13, 3, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (14, 3, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (15, 3, CURDATE());
+
+-- Time 4
+INSERT INTO Time (idTime, nome) VALUES (4, 'Time 4');
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (16, 4, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (17, 4, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (18, 4, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (19, 4, CURDATE());
+INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (20, 4, CURDATE());
 

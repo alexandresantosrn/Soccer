@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import controller.JogadorMBean;
+
 public class App {
 
 	private static Scanner input;
@@ -23,7 +25,7 @@ public class App {
 			switch (option) {
 
 			case 1:
-				
+				JogadorMBean.consultarJogador();
 				break;
 
 			case 0:

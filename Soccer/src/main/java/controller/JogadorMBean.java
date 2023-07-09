@@ -2,6 +2,9 @@ package controller;
 
 import java.util.Scanner;
 
+import dao.JogadorDAO;
+import model.Jogador;
+
 public class JogadorMBean {
 
 	private static Scanner input;
@@ -19,7 +22,21 @@ public class JogadorMBean {
 	}
 
 	private static void realizarConsultaAtleta(String nome, String equipe) {
-		
-		
+
+		Jogador jogador = new Jogador();
+		JogadorDAO JogadorDAO = new JogadorDAO();
+
+		jogador = JogadorDAO.getJogadorByNomeTime(nome, equipe);
+
+		if (jogador != null) {
+			System.out.println("Dados localizados com sucesso.");
+			System.out.println("Nome do Jogador: " + jogador.getNome());
+			System.out.println("Equipe Atual: " + jogador.getTimeAtual());
+			System.out.println(" \n");
+		}
+
+		else {
+			System.out.println("Não foram encontrados atletas com nome e equipe informadas.");
+		}
 	}
 }

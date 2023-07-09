@@ -31,11 +31,6 @@ public class OrganizadorDAO {
 				String login1 = resultSet.getString("login");
 				String senha1 = resultSet.getString("senha");
 
-//				System.out.println("ID Pessoa: " + idPessoa1);
-//				System.out.println("Login: " + login1);
-//				System.out.println("Senha: " + senha1);
-//				System.out.println("----------------------");
-
 				Organizador organizador = new Organizador(idPessoa1, login1, senha1);
 
 				return organizador;
