@@ -168,3 +168,50 @@ INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (18, 4, CUR
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (19, 4, CURDATE());
 INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (20, 4, CURDATE());
 
+-- Inserindo pessoas/treinadores
+
+-- Inserção do treinador 1
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (21, 'José Mourinho', '12345678901', '1963-01-26');
+INSERT INTO Treinador (idPessoa) VALUES (21);
+
+-- Inserção do treinador 2
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (22, 'Pep Guardiola', '23456789012', '1971-01-18');
+INSERT INTO Treinador (idPessoa) VALUES (22);
+
+-- Inserção do treinador 3
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (23, 'Jurgen Klopp', '34567890123', '1967-06-16');
+INSERT INTO Treinador (idPessoa) VALUES (23);
+
+-- Inserção do treinador 4
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (24, 'Diego Simeone', '45678901234', '1970-04-28');
+INSERT INTO Treinador (idPessoa) VALUES (24);
+
+-- Inserção do treinador 5
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
+VALUES (25, 'Zinedine Zidane', '56789012345', '1972-06-23');
+INSERT INTO Treinador (idPessoa) VALUES (25);
+
+-- Inserindo treinadores/times
+
+-- Inserção do treinador 1 no time 1
+INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
+VALUES (21, 1, '2021-01-01', NULL);
+
+-- Inserção do treinador 2 no time 2
+INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
+VALUES (22, 2, '2021-02-01', NULL);
+
+-- Inserção do treinador 3 no time 3
+INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
+VALUES (23, 3, '2021-03-01', NULL);
+
+-- Inserção do treinador 4 no time 4
+INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
+VALUES (24, 4, '2021-04-01', NULL);
+
+
+

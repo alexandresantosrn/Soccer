@@ -3,6 +3,8 @@ package view;
 import java.util.Scanner;
 
 import controller.JogadorMBean;
+import controller.TimeMBean;
+import controller.TreinadorMBean;
 
 public class App {
 
@@ -28,6 +30,13 @@ public class App {
 				JogadorMBean.consultarJogador();
 				break;
 
+			case 2:
+				TreinadorMBean.consultarTreinador();
+				break;
+				
+			case 3:
+				TimeMBean.consultarTime();
+				break;	
 			case 0:
 				System.out.println(" \n" + "Até logo pessoal!!");
 				break;

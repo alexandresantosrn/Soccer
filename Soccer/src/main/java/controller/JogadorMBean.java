@@ -24,9 +24,9 @@ public class JogadorMBean {
 	private static void realizarConsultaAtleta(String nome, String equipe) {
 
 		Jogador jogador = new Jogador();
-		JogadorDAO JogadorDAO = new JogadorDAO();
+		JogadorDAO jogadorDAO = new JogadorDAO();
 
-		jogador = JogadorDAO.getJogadorByNomeTime(nome, equipe);
+		jogador = jogadorDAO.getJogadorByNomeTime(nome, equipe);
 
 		if (jogador != null) {
 			System.out.println("Dados localizados com sucesso.");
