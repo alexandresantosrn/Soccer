@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import controller.CampeonatoMBean;
 import controller.JogadorMBean;
 import controller.TimeMBean;
 import controller.TreinadorMBean;
@@ -20,6 +21,7 @@ public class App {
 			System.out.println("1 - Consultar Jogador");
 			System.out.println("2 - Consultar Treinador");
 			System.out.println("3 - Consultar Time");
+			System.out.println("4 - Média de gols do campeonato");
 			System.out.println("0 - Sair");
 			System.out.print("Opção: ");
 			option = input.nextInt();
@@ -37,6 +39,10 @@ public class App {
 			case 3:
 				TimeMBean.consultarTime();
 				break;	
+				
+			case 4:
+				CampeonatoMBean.consultarMediaGols();
+				break;		
 			case 0:
 				System.out.println(" \n" + "Até logo pessoal!!");
 				break;
