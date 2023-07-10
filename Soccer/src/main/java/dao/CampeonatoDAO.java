@@ -32,7 +32,7 @@ public class CampeonatoDAO {
 			// Iterando sobre os resultados da consulta
 			while (resultSet.next()) {
 				Double media = resultSet.getDouble("media");
-				
+
 				return media;
 			}
 
@@ -40,5 +40,39 @@ public class CampeonatoDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public void getArtilheirosCampeonato(String nome) {
+		String sql = "Select COUNT(p.nome) as qtd, p.nome as nome " + "from Pessoa p "
+				+ "inner join Jogador j ON p.idPessoa = j.Pessoa_idPessoa "
+				+ "inner join Gol g on j.Pessoa_idPessoa = g.Jogador_Pessoa_idPessoa "
+				+ "inner join Partida p2 on g.Partida_idPartida = p2.idPartida "
+				+ "inner join Rodada r on p2.Rodada_idRodada = r.idRodada "
+				+ "inner join Campeonato c on r.Campeonato_idCampeonato = c.idCampeonato " + "where gol_contra = 0 "
+				+ "and c.nome = ? " + "GROUP by p.nome " + "ORDER BY qtd desc";
+
+		try {
+
+			Connection conn = ConnectionFactory.getConnection();
+			java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+
+			// Definindo os valores dos parâmetros
+			pstm.setString(1, nome); // nome
+
+			// Executando o comando SQL
+			ResultSet resultSet = pstm.executeQuery();
+
+			// Iterando sobre os resultados da consulta
+			while (resultSet.next()) {
+				int quantidade = resultSet.getInt("qtd");
+				String nomeJogador = resultSet.getString("nome");
+
+				System.out.println("Gols: " + quantidade + " - " + "Nome: " + nomeJogador);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

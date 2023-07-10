@@ -27,16 +27,33 @@ public class CampeonatoMBean {
 
 		Double mediaGols = campeonatoDAO.getMediaGolsCampeonato(nome);
 
-		if (mediaGols > 0 ) {
+		if (mediaGols > 0) {
 			System.out.println("Dados localizados com sucesso.");
-			System.out.println("Nome do Campeonato: " + campeonato.getNome());		
-			System.out.println("Média de Gols:" + mediaGols);
+			System.out.println("Nome do Campeonato: " + campeonato.getNome());
+			System.out.println("Média de Gols: " + mediaGols);
 			System.out.println(" \n");
 		}
 
 		else {
 			System.out.println("Não foram localizados campeonatos com a denominação informada.");
 		}
+
+	}
+
+	public static void consultarArtilheiros() {
+
+		input = new Scanner(System.in);
+
+		System.out.print("Informe o nome do campeonato: ");
+		String nome = input.nextLine();
+
+		realizarConsultaArtilharia(nome);
+	}
+
+	private static void realizarConsultaArtilharia(String nome) {
+
+		CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
+		campeonatoDAO.getArtilheirosCampeonato(nome);
 
 	}
 }
