@@ -25,17 +25,16 @@ public class CampeonatoMBean {
 		campeonato.setNome(nome);
 		CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
 
-		Double mediaGols = campeonatoDAO.getMediaGolsCampeonato(nome);
+		if (campeonatoDAO.existeCampeonatoByName(nome) == null) {
+			System.out.println("Não foram localizados campeonatos com a denominação informada.");
+		}
 
-		if (mediaGols > 0) {
+		else {
+			Double mediaGols = campeonatoDAO.getMediaGolsCampeonato(nome);
 			System.out.println("Dados localizados com sucesso.");
 			System.out.println("Nome do Campeonato: " + campeonato.getNome());
 			System.out.println("Média de Gols: " + mediaGols);
 			System.out.println(" \n");
-		}
-
-		else {
-			System.out.println("Não foram localizados campeonatos com a denominação informada.");
 		}
 
 	}
@@ -53,7 +52,15 @@ public class CampeonatoMBean {
 	private static void realizarConsultaArtilharia(String nome) {
 
 		CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
-		campeonatoDAO.getArtilheirosCampeonato(nome);
+
+		if (campeonatoDAO.existeCampeonatoByName(nome) == null) {
+			System.out.println("Não foram localizados campeonatos com a denominação informada.");
+		}
+
+		else {
+			campeonatoDAO.getArtilheirosCampeonato(nome);
+			System.out.println(" \n");
+		}
 
 	}
 }

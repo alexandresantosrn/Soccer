@@ -5,8 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import connection.ConnectionFactory;
-import model.Campeonato;
-import model.Jogador;
+import model.Organizador;
 
 public class CampeonatoDAO {
 
@@ -74,5 +73,34 @@ public class CampeonatoDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	public Boolean existeCampeonatoByName(String nome) {
+
+		String sql = "SELECT * FROM Campeonato WHERE nome = ?";
+
+		try {
+
+			Connection conn = ConnectionFactory.getConnection();
+			java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+
+			// Definindo os valores dos parâmetros
+			pstm.setString(1, nome); // nome
+
+			// Executando o comando SQL
+			ResultSet resultSet = pstm.executeQuery();
+
+			// Iterando sobre os resultados da consulta
+			while (resultSet.next()) {
+				String nomeCampeonato = resultSet.getString("nome");
+
+				Boolean existe = true;
+				return existe;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
