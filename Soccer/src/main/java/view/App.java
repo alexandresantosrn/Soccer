@@ -26,6 +26,7 @@ public class App {
 			System.out.println("6 - Consultar Classificação");
 			System.out.println("7 - Consultar Histórico Atleta");
 			System.out.println("8 - Jogadores por time");
+			System.out.println("9 - Atualizar Jogador");
 			System.out.println("0 - Sair");
 			System.out.print("Opção: ");
 			option = input.nextInt();
@@ -62,7 +63,11 @@ public class App {
 			case 8:
 				TimeMBean.jogadoresPorTime();
 				break;
-
+			
+			case 9:
+				JogadorMBean.atualizarJogador();
+				break;
+				
 			case 0:
 				System.out.println(" \n" + "Até logo pessoal!!");
 				break;

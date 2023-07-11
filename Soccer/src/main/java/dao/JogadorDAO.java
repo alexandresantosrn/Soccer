@@ -82,4 +82,66 @@ public class JogadorDAO {
 
 	}
 
+	public Jogador getJogadorByCPFNome(String cpf, String nome) {
+		String sql = "SELECT j.Pessoa_idPessoa as idPessoa, p.nome AS nome_jogador, p.cpf, p.data_nascimento AS data_nascimento "
+				+ "FROM Jogador j " + "INNER JOIN Pessoa p ON j.Pessoa_idPessoa = p.idPessoa " + "WHERE cpf = ? "
+				+ "AND p.nome = ?";
+
+		try {
+
+			Connection conn = ConnectionFactory.getConnection();
+			java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+
+			// Definindo os valores dos parâmetros
+			pstm.setString(1, cpf); // cpf
+			pstm.setString(2, nome); // nome
+
+			// Executando o comando SQL
+			ResultSet resultSet = pstm.executeQuery();
+
+			// Iterando sobre os resultados da consulta
+			while (resultSet.next()) {
+				int idPessoa1 = resultSet.getInt("idPessoa");
+				String nomeJogador = resultSet.getString("nome_jogador");
+				Date dataNascimento = resultSet.getDate("data_nascimento");
+
+				Jogador jogador = new Jogador();
+				jogador.setNome(nomeJogador);
+				jogador.setDataNascimento(dataNascimento);
+				jogador.setIdPessoa(idPessoa1);
+
+				return jogador;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static void atualizarJogador(int idPessoa, String name, String dataNascimento) {
+
+		String sql = "update Pessoa " + "set nome = ?, data_nascimento = ? " + "where idPessoa = ?";
+
+		try {
+
+			Connection conn = ConnectionFactory.getConnection();
+			java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+
+			// Definindo os valores dos parâmetros
+			pstm.setString(1, name); // nome
+			pstm.setString(2, dataNascimento);
+			pstm.setInt(3, idPessoa); // idPessoa
+			
+			pstm.executeUpdate();
+			
+			System.out.println("Dados atualizados com sucesso!");
+			System.out.println(" \n");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }

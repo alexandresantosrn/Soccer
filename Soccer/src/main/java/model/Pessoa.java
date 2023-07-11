@@ -1,17 +1,19 @@
 package model;
 
+import java.sql.Date;
+
 public class Pessoa {
 
 	int idPessoa;
 	String nome;
-	String dataNascimento;
+	Date dataNascimento;
 	String cpf;
 
 	public Pessoa() {
 
 	}
 
-	public Pessoa(int idPessoa, String nome, String dataNascimento, String cpf) {
+	public Pessoa(int idPessoa, String nome, Date dataNascimento, String cpf) {
 		this.idPessoa = idPessoa;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
@@ -34,12 +36,12 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setDataNascimento(Date dataNascimento2) {
+		this.dataNascimento = dataNascimento2;
 	}
 
 	public String getCpf() {
