@@ -1,0 +1,3 @@
+idRodada,idCampeonato,numero_rodada,data_inicio,data_fim
+
+idRodada -> idCampeonato,numero_rodada,data_inicio,data_fim

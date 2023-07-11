@@ -1,0 +1,3 @@
+idCampeonato,idPessoa,nome
+
+idCampeonato -> idPessoa,nome

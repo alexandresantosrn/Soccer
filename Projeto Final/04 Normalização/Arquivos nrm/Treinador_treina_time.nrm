@@ -1,0 +1,3 @@
+idPessoa,idTime,data_inicio,data_fim
+
+idTime,idPessoa -> data_inicio,data_fim

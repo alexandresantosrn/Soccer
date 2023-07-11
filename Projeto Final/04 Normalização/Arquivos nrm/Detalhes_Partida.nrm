@@ -1,0 +1,3 @@
+idPartida,idTimeCasa,idTimeVisitante,golsCasa,golsVisitante
+
+idPartida,idTimeCasa,idTimeVisitante -> golsCasa,golsVisitante

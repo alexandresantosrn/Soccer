@@ -1,0 +1,3 @@
+idEstadio,cep,rua,numero
+
+idEstadio -> cep,rua,numero

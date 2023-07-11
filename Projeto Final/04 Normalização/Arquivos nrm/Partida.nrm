@@ -1,0 +1,3 @@
+idPartida,idEstadio,idRodada,idStatus_partida,data,hora_inicio,hora_fim
+
+idPartida -> idEstadio,idRodada,idStatus_partida,data,hora_inicio,hora_fim

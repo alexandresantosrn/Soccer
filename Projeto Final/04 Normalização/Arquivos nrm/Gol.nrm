@@ -1,0 +1,3 @@
+idGol,idJogador,idPartida,tempo,gol_contra
+
+idGol -> idJogador,idPartida,tempo,gol_contra

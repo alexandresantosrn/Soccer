@@ -1,0 +1,4 @@
+idPessoa,login,senha
+
+idPessoa -> login,senha
+login -> idPessoa,senha
