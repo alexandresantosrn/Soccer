@@ -6,7 +6,6 @@ import controller.CampeonatoMBean;
 import controller.JogadorMBean;
 import controller.TimeMBean;
 import controller.TreinadorMBean;
-import dao.ClassificacaoDAO;
 
 public class App {
 
@@ -24,6 +23,7 @@ public class App {
 			System.out.println("3 - Consultar Time");
 			System.out.println("4 - Média de gols do campeonato");
 			System.out.println("5 - Artilheiros do campeonato");
+			System.out.println("6 - Consultar Classificação");
 			System.out.println("0 - Sair");
 			System.out.print("Opção: ");
 			option = input.nextInt();
@@ -37,22 +37,22 @@ public class App {
 			case 2:
 				TreinadorMBean.consultarTreinador();
 				break;
-				
+
 			case 3:
 				TimeMBean.consultarTime();
-				break;	
-				
+				break;
+
 			case 4:
 				CampeonatoMBean.consultarMediaGols();
 				break;
-			
+
 			case 5:
 				CampeonatoMBean.consultarArtilheiros();
 				break;
 			case 6:
-				ClassificacaoDAO.getClassificacao();
+				CampeonatoMBean.consultarClassificacao();
 				break;
-			
+
 			case 0:
 				System.out.println(" \n" + "Até logo pessoal!!");
 				break;

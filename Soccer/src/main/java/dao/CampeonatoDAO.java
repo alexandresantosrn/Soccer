@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import connection.ConnectionFactory;
-import model.Organizador;
 
 public class CampeonatoDAO {
 
@@ -92,7 +91,6 @@ public class CampeonatoDAO {
 
 			// Iterando sobre os resultados da consulta
 			while (resultSet.next()) {
-				String nomeCampeonato = resultSet.getString("nome");
 
 				Boolean existe = true;
 				return existe;

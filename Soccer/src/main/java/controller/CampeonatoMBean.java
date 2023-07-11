@@ -3,6 +3,7 @@ package controller;
 import java.util.Scanner;
 
 import dao.CampeonatoDAO;
+import dao.ClassificacaoDAO;
 import model.Campeonato;
 
 public class CampeonatoMBean {
@@ -59,6 +60,31 @@ public class CampeonatoMBean {
 
 		else {
 			campeonatoDAO.getArtilheirosCampeonato(nome);
+			System.out.println(" \n");
+		}
+
+	}
+
+	public static void consultarClassificacao() {
+
+		input = new Scanner(System.in);
+
+		System.out.print("Informe o nome do campeonato: ");
+		String nome = input.nextLine();
+
+		realizarConsultaClassificacao(nome);
+	}
+
+	private static void realizarConsultaClassificacao(String nome) {
+
+		CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
+
+		if (campeonatoDAO.existeCampeonatoByName(nome) == null) {
+			System.out.println("Não foram localizados campeonatos com a denominação informada.");
+		}
+
+		else {
+			ClassificacaoDAO.getClassificacao(nome);
 			System.out.println(" \n");
 		}
 
