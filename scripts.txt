@@ -348,3 +348,9 @@ VALUES (13, 7, 7, 65, 1); -- Gol contra o Time 2
 INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
 VALUES (8, 3, 4, 0, 0);
 
+-- Criando histórico jogador cr7 
+
+INSERT INTO Jogador_joga_time 
+VALUES(1, 4, '2020-01-01', '2021-02-01');
+
+

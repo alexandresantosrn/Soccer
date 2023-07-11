@@ -39,4 +39,20 @@ public class JogadorMBean {
 			System.out.println("Não foram encontrados atletas com nome e equipe informadas.");
 		}
 	}
+
+	public static void consultaHistoricoJogador() {
+
+		input = new Scanner(System.in);
+
+		System.out.print("Informe o nome do jogador: ");
+		String nome = input.nextLine();
+		realizarConsultaHistoricoAtleta(nome);
+	}
+
+	private static void realizarConsultaHistoricoAtleta(String nome) {
+		
+		JogadorDAO jogadorDAO = new JogadorDAO();
+		jogadorDAO.getHistoricoJogadorByNome(nome);
+		
+	}
 }
