@@ -276,10 +276,57 @@ LEFT JOIN Detalhes_Partida dp ON dp.Time_idTimeCasa = t.idTime OR dp.Time_idTime
 GROUP BY t.idTime, t.nome
 ORDER BY Pontos DESC, GolsMarcados DESC;
 
+-- campeonato 2, serie b
+-- criando campeonato serie b
+INSERT INTO Campeonato (idCampeonato, Organizador_Pessoa_idPessoa, nome) VALUES (2, 21, 'Brasileirao serie B');
 
+-- Times participantes
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (1, 2);
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (2, 2);
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (3, 2);
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (4, 2);
 
-SELECT * FROM Classificacao;
+-- partidas
+-- Criar primeira rodada
+INSERT INTO Rodada (idRodada, Campeonato_idCampeonato, numero_rodada, data_inicio, data_fim)
+VALUES (4, 2, 1, '2023-07-01', '2023-07-07');
 
-select * from Detalhes_Partida
+-- Partidas da primeira rodada
+-- Partida 1: ABC x América
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (7, 1, 4, 1, '2023-07-01', '15:00:00', '17:00:00');
+
+-- Partida 2: Globo x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (8, 4, 4, 1, '2023-07-01', '17:30:00', '19:30:00');
+
+-- até aqui em cima está ok!! esses aqui abaixo n testei
+
+INSERT INTO Rodada (idRodada, Campeonato_idCampeonato, numero_rodada, data_inicio, data_fim)
+VALUES (5, 2, 2, '2023-07-08', '2023-07-14');
+
+-- Partidas da segunda rodada
+-- Partida 3: ABC x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (9, 1, 5, 1, '2023-07-08', '15:00:00', '17:00:00');
+
+-- Partida 4: America x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (10, 3, 5, 1, '2023-07-08', '17:30:00', '19:30:00');
+
+-- falta essa
+-- Criar terceira rodada
+INSERT INTO Rodada (idRodada, Campeonato_idCampeonato, numero_rodada, data_inicio, data_fim)
+VALUES (6, 2, 3, '2023-07-15', '2023-07-21');
+
+-- Partidas da terceira rodada
+-- Partida 5: ABC x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (11, 1, 6, 1, '2023-07-15', '15:00:00', '17:00:00');
+
+-- Partida 6: Globo x America
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (12, 4, 6, 1, '2023-07-15', '17:30:00', '19:30:00');
+
 
 

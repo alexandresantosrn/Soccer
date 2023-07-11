@@ -13,7 +13,7 @@ public class ClassificacaoDAO {
 	
 	public static List<Classificacao> getClassificacao() {
 		//String sql = "select * from Classificacao";
-		int campeonatoId = 1; // Substitua pelo ID do campeonato desejado
+		int campeonatoId = 2; // Substitua pelo ID do campeonato desejado
 
 		String sql = "SELECT t.idTime, t.nome AS Time, " +
 	             "COALESCE(SUM(CASE WHEN dp.Time_idTimeCasa = t.idTime THEN " +
