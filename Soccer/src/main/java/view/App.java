@@ -6,6 +6,7 @@ import controller.CampeonatoMBean;
 import controller.JogadorMBean;
 import controller.TimeMBean;
 import controller.TreinadorMBean;
+import dao.ClassificacaoDAO;
 
 public class App {
 
@@ -47,7 +48,10 @@ public class App {
 			
 			case 5:
 				CampeonatoMBean.consultarArtilheiros();
-				break;				
+				break;
+			case 6:
+				ClassificacaoDAO.getClassificacao();
+				break;
 			
 			case 0:
 				System.out.println(" \n" + "Até logo pessoal!!");
