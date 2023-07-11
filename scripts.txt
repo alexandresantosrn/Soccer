@@ -329,4 +329,22 @@ INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Parti
 VALUES (12, 4, 6, 1, '2023-07-15', '17:30:00', '19:30:00');
 
 
+-- resultados somente da primeira rodada do camp 2
+
+-- Partida 1: ABC x America
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (7, 1, 2, 2, 1);
+select * from Gol
+-- Inserir gols do Time 1
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (11, 1, 7, 35, 0), -- Gol do Time 1
+       (12, 1, 7, 65, 0); -- Gol do Time 1
+
+-- Inserir gol do Time 2
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (13, 7, 7, 65, 1); -- Gol contra o Time 2
+
+-- Partida 2: Globo x Alecrim
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (8, 3, 4, 0, 0);
 
