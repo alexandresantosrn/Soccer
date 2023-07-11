@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Scanner;
 
+import dao.ClassificacaoDAO;
 import dao.TimeDAO;
 import model.Time;
 
@@ -33,8 +34,34 @@ public class TimeMBean {
 		}
 
 		else {
-			System.out.println("Não foram equipes com o nome informado.");
+			System.out.println("Não foram localizadas equipes com o nome informado.");
 		}
+	}
+
+	public static void jogadoresPorTime() {
+		input = new Scanner(System.in);
+
+		System.out.print("Informe o nome da equipe: ");
+		String equipe = input.nextLine();
+
+		realizarConsultaJogadoresPorEquipe(equipe);
+	}
+
+	private static void realizarConsultaJogadoresPorEquipe(String equipe) {
+
+		Time time = new Time();
+		TimeDAO timeDAO = new TimeDAO();
+
+		time = timeDAO.getTimeByNome(equipe);
+
+		if (time != null) {
+			timeDAO.getJogadoresByTime(equipe);
+		}
+
+		else {
+			System.out.println("Não foram localizadas equipes com o nome informado.");
+		}
+
 	}
 
 }

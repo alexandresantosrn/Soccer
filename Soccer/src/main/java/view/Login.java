@@ -16,7 +16,7 @@ public class Login {
 		while (option != 0 && option != 1) {
 
 			System.out.println("---------------------------------------------------------------");
-			System.out.println("Bem vindo ao sistema Soccer. Informe abaixo seu login e senha.");
+			System.out.println("Bem vindo ao sistema Soccer.");
 			System.out.println("Escolha a opção desejada: ");
 			System.out.println("1 - Realizar Login");
 			System.out.println("0 - Sair");
