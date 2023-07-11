@@ -1,246 +1,285 @@
--- Criando tabela Pessoa
-
-CREATE TABLE Pessoa (
-    idPessoa INT PRIMARY KEY,
-    nome VARCHAR(255),
-    data_nascimento DATE,
-    cpf VARCHAR(14)
-);
-
--- Criando tabela Organizador
-
-CREATE TABLE Organizador (
-    idPessoa INT,
-    login VARCHAR(255),
-    senha VARCHAR(255),
-    FOREIGN KEY (idPessoa) REFERENCES Pessoa(idPessoa)
-);
-
--- Insert do Organizador
-
-INSERT INTO Pessoa (idPessoa, nome, data_nascimento, cpf)
-VALUES (100, 'Alexandre Dantas', '1984-11-24', '05641479403');
-
-INSERT INTO Organizador (idPessoa, login, senha)
-VALUES (100, 'alexandre', '123456');
-
--- Criando tabela Jogador
-
-CREATE TABLE Jogador (
-    idPessoa INT,
-    numero_camisa INT,
-    FOREIGN KEY (idPessoa) REFERENCES Pessoa(idPessoa)
-);
-
--- Criando tabela de Time
-
-CREATE TABLE Time (
-    idTime INT PRIMARY KEY,
-    nome VARCHAR(255)
-);
-
--- Criando tabela Jogador_joga_time
-
-CREATE TABLE Jogador_joga_time (
-    idPessoa INT,
-    idTime INT,
-    data_inicio DATE,
-    data_fim DATE,
-    FOREIGN KEY (idPessoa) REFERENCES Jogador(idPessoa),
-    FOREIGN KEY (idTime) REFERENCES Time(idTime)
-);
-
--- Insert de Pessoas/Jogadores
-
 -- Pessoas do Time 1
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (1, 'Cristiano Ronaldo', '12345678901', '1985-02-05');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (2, 'Lionel Messi', '23456789012', '1987-06-24');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (3, 'Neymar Jr.', '34567890123', '1992-02-05');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (4, 'Sergio Ramos', '45678901234', '1986-03-30');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (5, 'Kevin De Bruyne', '56789012345', '1991-06-28');
 
 -- Pessoas do Time 2
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (6, 'Robert Lewandowski', '67890123456', '1988-08-21');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (7, 'Mohamed Salah', '78901234567', '1992-06-15');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (8, 'Harry Kane', '89012345678', '1993-07-28');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (9, 'Kylian Mbappé', '90123456789', '1998-12-20');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (10, 'Virgil van Dijk', '01234567890', '1991-07-08');
 
 -- Pessoas do Time 3
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (11, 'Antoine Griezmann', '12345678901', '1991-03-21');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (12, 'Manuel Neuer', '23456789012', '1986-03-27');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (13, 'Karim Benzema', '34567890123', '1987-12-19');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (14, 'Jan Oblak', '45678901234', '1993-01-07');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (15, 'Eden Hazard', '56789012345', '1991-01-07');
 
 -- Pessoas do Time 4
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (16, 'Alisson Becker', '67890123456', '1992-10-02');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (17, 'Sergio Agüero', '78901234567', '1988-06-02');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (18, 'Thiago Silva', '89012345678', '1984-09-22');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (19, 'David Alaba', '90123456789', '1992-06-24');
-
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
 VALUES (20, 'Paul Pogba', '01234567890', '1993-03-15');
 
--- Insert de Jogadores
-
--- Jogadores do Time 1
-INSERT INTO Jogador (idPessoa, numero_camisa)
-VALUES (1, 10), (2, 7), (3, 9), (4, 5), (5, 2);
-
--- Jogadores do Time 2
-INSERT INTO Jogador (idPessoa, numero_camisa)
-VALUES (6, 10), (7, 7), (8, 9), (9, 5), (10, 2);
-
--- Jogadores do Time 3
-INSERT INTO Jogador (idPessoa, numero_camisa)
-VALUES (11, 10), (12, 7), (13, 9), (14, 5), (15, 2);
-
--- Jogadores do Time 4
-INSERT INTO Jogador (idPessoa, numero_camisa)
-VALUES (16, 10), (17, 7), (18, 9), (19, 5), (20, 2);
-
--- Inserindo times e jogadores
-
--- Time 1
-INSERT INTO Time (idTime, nome) VALUES (1, 'ABC');
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (1, 1, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (2, 1, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (3, 1, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (4, 1, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (5, 1, CURDATE());
-
--- Time 2
-INSERT INTO Time (idTime, nome) VALUES (2, 'America');
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (6, 2, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (7, 2, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (8, 2, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (9, 2, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (10, 2, CURDATE());
-
--- Time 3
-INSERT INTO Time (idTime, nome) VALUES (3, 'Globo');
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (11, 3, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (12, 3, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (13, 3, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (14, 3, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (15, 3, CURDATE());
-
--- Time 4
-INSERT INTO Time (idTime, nome) VALUES (4, 'Alecrim');
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (16, 4, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (17, 4, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (18, 4, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (19, 4, CURDATE());
-INSERT INTO Jogador_joga_time (idPessoa, idTime, data_inicio) VALUES (20, 4, CURDATE());
+-- Inserir Treinadores
+INSERT INTO Pessoa (idPessoa, nome, data_nascimento, cpf)
+VALUES (22, 'Abel Ferreira', '1990-01-01', '11111111111'),
+       (23, 'Fernando Diniz', '1985-03-15', '22222222222'),
+       (24, 'J. Klop', '1982-07-20', '33333333333'),
+       (25, 'Pep Guardiola', '1978-12-10', '44444444444');
 
 
--- Criando tabela de treinador/time
+-- Inserir Times
+INSERT INTO Time (idTime, nome)
+VALUES (1, 'ABC'),
+       (2, 'America'),
+       (3, 'Globo'),
+       (4, 'Alecrim');
 
-CREATE TABLE Treinador (
-    idPessoa INT,
-    FOREIGN KEY (idPessoa) REFERENCES Pessoa(idPessoa)
-);
+-- Inserir Treinadores dos Times
+INSERT INTO Treinador (Pessoa_idPessoa)
+VALUES (22), -- ID do primeiro treinador
+       (23), -- ID do segundo treinador
+       (24), -- ID do terceiro treinador
+       (25); -- ID do quarto treinador
 
-CREATE TABLE Treinador_treina_time (
-    idPessoa INT,
-    idTime INT,
-    data_inicio DATE,
-    data_fim DATE,
-    FOREIGN KEY (idPessoa) REFERENCES Treinador(idPessoa),
-    FOREIGN KEY (idTime) REFERENCES Time(idTime)
-);
+-- Inserir Jogadores
+INSERT INTO Jogador (Pessoa_idPessoa, numero_camisa)
+VALUES (1, 10),
+       (2, 7),
+       (3, 9),
+       (4, 5),
+       (5, 2),
+       (6, 10),
+       (7, 7),
+       (8, 9),
+       (9, 5),
+       (10, 2),
+       (11, 10),
+       (12, 7),
+       (13, 9),
+       (14, 5),
+       (15, 2),
+       (16, 10),
+       (17, 7),
+       (18, 9),
+       (19, 5),
+       (20, 2);
 
--- Inserindo pessoas/treinadores
+-- Inserir relação Jogador x Time
+INSERT INTO Jogador_joga_time (Jogador_Pessoa_idPessoa, Time_idTime, data_inicio)
+VALUES (1, 1, '2023-06-01'),
+       (2, 1, '2023-06-01'),
+       (3, 1, '2023-06-01'),
+       (4, 1, '2023-06-01'),
+       (5, 1, '2023-06-01'),
+       (6, 2, '2023-06-01'),
+       (7, 2, '2023-06-01'),
+       (8, 2, '2023-06-01'),
+       (9, 2, '2023-06-01'),
+       (10, 2, '2023-06-01'),
+       (11, 3, '2023-06-01'),
+       (12, 3, '2023-06-01'),
+       (13, 3, '2023-06-01'),
+       (14, 3, '2023-06-01'),
+       (15, 3, '2023-06-01'),
+       (16, 4, '2023-06-01'),
+       (17, 4, '2023-06-01'),
+       (18, 4, '2023-06-01'),
+       (19, 4, '2023-06-01'),
+       (20, 4, '2023-06-01');
 
--- Inserção do treinador 1
-INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (21, 'José Mourinho', '12345678901', '1963-01-26');
-INSERT INTO Treinador (idPessoa) VALUES (21);
+-- Inserir relação Treinador x Time
+INSERT INTO Treinador_treina_time (Treinador_Pessoa_idPessoa, Time_idTime, data_inicio)
+VALUES (22, 1, '2023-06-01'),
+       (23, 2, '2023-06-01'),
+       (24, 3, '2023-06-01'),
+       (25, 4, '2023-06-01');
 
--- Inserção do treinador 2
-INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (22, 'Pep Guardiola', '23456789012', '1971-01-18');
-INSERT INTO Treinador (idPessoa) VALUES (22);
-
--- Inserção do treinador 3
-INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (23, 'Jurgen Klopp', '34567890123', '1967-06-16');
-INSERT INTO Treinador (idPessoa) VALUES (23);
-
--- Inserção do treinador 4
-INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (24, 'Diego Simeone', '45678901234', '1970-04-28');
-INSERT INTO Treinador (idPessoa) VALUES (24);
-
--- Inserção do treinador 5
-INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (25, 'Zinedine Zidane', '56789012345', '1972-06-23');
-INSERT INTO Treinador (idPessoa) VALUES (25);
-
--- Inserindo treinadores/times
-
--- Inserção do treinador 1 no time 1
-INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
-VALUES (21, 1, '2021-01-01', NULL);
-
--- Inserção do treinador 2 no time 2
-INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
-VALUES (22, 2, '2021-02-01', NULL);
-
--- Inserção do treinador 3 no time 3
-INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
-VALUES (23, 3, '2021-03-01', NULL);
-
--- Inserção do treinador 4 no time 4
-INSERT INTO Treinador_treina_time (idPessoa, idTime, data_inicio, data_fim)
-VALUES (24, 4, '2021-04-01', NULL);
-
--- Criando tabela de Campeonato
-
-CREATE TABLE Campeonato (
-    idCampeonato INT,
-    idPessoa INT,
-    nome VARCHAR(255),
-    FOREIGN KEY (idPessoa) REFERENCES Organizador(idPessoa)
-);
+-- Criar pessoa organizador
+INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento) VALUES (21, 'Organizador 1', '12345678901', '1980-01-01');
+INSERT INTO Organizador (Pessoa_idPessoa, login, senha) VALUES (21, 'organizador1', 'senhaorganizador1');
 
 -- Criar campeonato
-INSERT INTO Campeonato (idCampeonato, idPessoa, nome) VALUES (1, 100, 'Brasileirao serie A');
+INSERT INTO Campeonato (idCampeonato, Organizador_Pessoa_idPessoa, nome) VALUES (1, 21, 'Brasileirao serie A');
 
+-- Times participantes
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (1, 1);
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (2, 1);
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (3, 1);
+INSERT INTO Time_participa_Campeonato (Time_idTime, Campeonato_idCampeonato) VALUES (4, 1);
+
+-- Estádios do Time 1
+INSERT INTO Estadio (idEstadio, nome, Time_idTime) VALUES (1, 'Frasqueirão', 1);
+INSERT INTO Endereco_Estadio (Estadio_idEstadio, cep, rua, numero) VALUES (1, '12345678', 'Rua Estádio 1', 100);
+
+-- Estádios do Time 2
+INSERT INTO Estadio (idEstadio, nome, Time_idTime) VALUES (2, 'Arena das Dunas', 4);
+INSERT INTO Endereco_Estadio (Estadio_idEstadio, cep, rua, numero) VALUES (2, '23456789', 'Rua Estádio 2', 200);
+
+-- Estádios do Time 3
+INSERT INTO Estadio (idEstadio, nome, Time_idTime) VALUES (3, 'Curral do mequinha', 2);
+INSERT INTO Endereco_Estadio (Estadio_idEstadio, cep, rua, numero) VALUES (3, '34567890', 'Rua Estádio 3', 300);
+
+-- Estádios do Time 4
+INSERT INTO Estadio (idEstadio, nome, Time_idTime) VALUES (4, 'Barretão', 3);
+INSERT INTO Endereco_Estadio (Estadio_idEstadio, cep, rua, numero) VALUES (4, '45678901', 'Rua Estádio 4', 400);
+
+insert into Status_Partida (idStatus_Partida, descricao) values (1,'para inicar');
+insert into Status_Partida (idStatus_Partida, descricao) values (2,'em andamento');
+insert into Status_Partida (idStatus_Partida, descricao) values (3,'Finalizada');
+-- Criar primeira rodada
+INSERT INTO Rodada (idRodada, Campeonato_idCampeonato, numero_rodada, data_inicio, data_fim)
+VALUES (1, 1, 1, '2023-07-01', '2023-07-07');
+
+-- Partidas da primeira rodada
+-- Partida 1: ABC x América
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (1, 1, 1, 1, '2023-07-01', '15:00:00', '17:00:00');
+
+-- Partida 2: Globo x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (2, 4, 1, 1, '2023-07-01', '17:30:00', '19:30:00');
+
+
+-- Criar segunda rodada
+INSERT INTO Rodada (idRodada, Campeonato_idCampeonato, numero_rodada, data_inicio, data_fim)
+VALUES (2, 1, 2, '2023-07-08', '2023-07-14');
+
+-- Partidas da segunda rodada
+-- Partida 3: ABC x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (3, 1, 2, 1, '2023-07-08', '15:00:00', '17:00:00');
+
+-- Partida 4: America x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (4, 3, 2, 1, '2023-07-08', '17:30:00', '19:30:00');
+
+
+-- Criar terceira rodada
+INSERT INTO Rodada (idRodada, Campeonato_idCampeonato, numero_rodada, data_inicio, data_fim)
+VALUES (3, 1, 3, '2023-07-15', '2023-07-21');
+
+-- Partidas da terceira rodada
+-- Partida 5: ABC x Alecrim
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (5, 1, 3, 1, '2023-07-15', '15:00:00', '17:00:00');
+
+-- Partida 6: Globo x America
+INSERT INTO Partida (idPartida, Estadio_idEstadio, Rodada_idRodada, Status_Partida_idStatus_Partida, data, hora_inicio, hora_fim)
+VALUES (6, 4, 3, 1, '2023-07-15', '17:30:00', '19:30:00');
+
+-- Partida 1: ABC x America
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (1, 1, 2, 2, 1);
+
+-- Inserir gols do Time 1
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (1, 1, 1, 35, 0), -- Gol do Time 1
+       (2, 1, 1, 65, 0); -- Gol do Time 1
+
+-- Inserir gol do Time 2
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (3, 7, 1, 65, 1); -- Gol contra o Time 2
+
+-- Partida 2: Globo x Alecrim
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (2, 3, 4, 0, 0);
+
+-- Partida 3: ABC x Globo
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (3, 1, 3, 1, 1);
+
+-- Inserir gols do Time 1
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (4, 1, 3, 25, 0); -- Gol do Time 1
+
+-- Inserir gol do Time 3
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (5, 13, 3, 70, 0); -- Gol do Time 3
+
+-- Partida 4: America x Alecrim
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (4, 2, 4, 0, 2);
+
+-- Inserir gols do Time 4
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (6, 16, 4, 10, 0), -- Gol do Time 1
+       (7, 18, 4, 60, 0); -- Gol do Time 1
+
+-- Partida 5: ABC x Alecrim
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (5, 1, 4, 2, 0);
+
+-- Inserir gols do Time 2
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (8, 3, 5, 15, 0), -- Gol do Time 2
+       (9, 3, 5, 80, 0); -- Gol do Time 2
+
+-- Partida 6: Globo x America
+INSERT INTO Detalhes_Partida (Partida_idPartida, Time_idTimeCasa, Time_idTimeVisitante, golsCasa, golsVisitante)
+VALUES (6, 3, 2, 1, 0);
+
+-- Inserir gol contra do Time 3
+INSERT INTO Gol (idGol, Jogador_Pessoa_idPessoa, Partida_idPartida, tempo, gol_contra)
+VALUES (10, 12, 6, 30, 1); -- Gol contra o Time 2
+
+
+
+
+
+
+CREATE OR REPLACE VIEW Classificacao AS
+SELECT
+  t.idTime,
+  t.nome AS Time,
+  COALESCE(SUM(CASE WHEN dp.Time_idTimeCasa = t.idTime THEN
+                       CASE WHEN dp.golsCasa > dp.golsVisitante THEN 3
+                            WHEN dp.golsCasa = dp.golsVisitante THEN 1
+                            ELSE 0
+                       END
+                   ELSE
+                       CASE WHEN dp.golsCasa < dp.golsVisitante THEN 3
+                            WHEN dp.golsCasa = dp.golsVisitante THEN 1
+                            ELSE 0
+                       END
+                   END), 0) AS Pontos,
+  COALESCE(SUM(CASE WHEN dp.Time_idTimeCasa = t.idTime THEN dp.golsCasa ELSE dp.golsVisitante END), 0) AS GolsMarcados,
+  COALESCE(SUM(CASE WHEN dp.Time_idTimeCasa = t.idTime THEN dp.golsVisitante ELSE dp.golsCasa END), 0) AS GolsSofridos
+FROM Time t
+LEFT JOIN Detalhes_Partida dp ON dp.Time_idTimeCasa = t.idTime OR dp.Time_idTimeVisitante = t.idTime
+GROUP BY t.idTime, t.nome
+ORDER BY Pontos DESC, GolsMarcados DESC;
+
+
+
+SELECT * FROM Classificacao;
+
+select * from Detalhes_Partida
 
 
