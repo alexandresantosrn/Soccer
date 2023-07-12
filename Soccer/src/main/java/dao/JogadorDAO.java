@@ -134,7 +134,7 @@ public class JogadorDAO {
 
 			// Definindo os valores dos parâmetros
 			pstm.setString(1, name); // nome
-			pstm.setString(2, dataNascimento); //data de nascimento
+			pstm.setString(2, dataNascimento); // data de nascimento
 			pstm.setInt(3, idPessoa); // idPessoa
 
 			pstm.executeUpdate();
@@ -146,6 +146,79 @@ public class JogadorDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void inserirPessoaJogador(int idPessoa, String nome, String dataNascimento, String cpf) {
+
+		String sql = "INSERT INTO Pessoa " + "(idPessoa, nome, data_nascimento, cpf) " + "VALUES(?, ?, ?, ?)";
+
+		try {
+
+			Connection conn = ConnectionFactory.getConnection();
+			java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+
+			// Definindo os valores dos parâmetros
+			pstm.setInt(1, idPessoa); // id
+			pstm.setString(2, nome); // nome
+			pstm.setString(3, dataNascimento); // data de nascimento
+			pstm.setString(4, cpf); // idPessoa
+
+			pstm.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void inserirJogador(int Pessoa_idPessoa, int numero) {
+
+		String sql = "INSERT INTO Jogador " + "(Pessoa_idPessoa, numero_camisa) " + "VALUES(?, ?)";
+
+		try {
+
+			Connection conn = ConnectionFactory.getConnection();
+			java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+
+			// Definindo os valores dos parâmetros
+			pstm.setInt(1, Pessoa_idPessoa); // id
+			pstm.setInt(2, numero); // numero
+
+			pstm.executeUpdate();
+
+			System.out.println("Dados inseridos com sucesso!");
+			System.out.println("");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public Integer getNextId() {
+
+		String sql = "SELECT MAX(idPessoa) as IdPessoa FROM Pessoa";
+
+		try {
+
+			Connection conn = ConnectionFactory.getConnection();
+			java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+
+			// Executando o comando SQL
+			ResultSet resultSet = pstm.executeQuery();
+
+			// Iterando sobre os resultados da consulta
+			while (resultSet.next()) {
+				int idPessoa = resultSet.getInt("idPessoa");
+
+				return idPessoa + 1;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }

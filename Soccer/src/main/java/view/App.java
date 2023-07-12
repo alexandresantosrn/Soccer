@@ -27,6 +27,7 @@ public class App {
 			System.out.println("7 - Consultar Histórico Atleta");
 			System.out.println("8 - Jogadores por time");
 			System.out.println("9 - Atualizar Jogador");
+			System.out.println("10 - Cadastrar Jogador");
 			System.out.println("0 - Sair");
 			System.out.print("Opção: ");
 			option = input.nextInt();
@@ -66,6 +67,10 @@ public class App {
 			
 			case 9:
 				JogadorMBean.atualizarJogador();
+				break;
+				
+			case 10:
+				JogadorMBean.cadastrarJogador();
 				break;
 				
 			case 0:

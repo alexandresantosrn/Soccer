@@ -94,4 +94,29 @@ public class JogadorMBean {
 			System.out.println("Não foram encontrados atletas com o cpf informado.");
 		}
 	}
+
+	public static void cadastrarJogador() {
+
+		input = new Scanner(System.in);
+
+		System.out.print("Informe o nome do jogador: ");
+		String nome = input.nextLine();
+		System.out.print("Informe a data de nascimento do jogador (Formato: AAAA-MM-DD): ");
+		String dataNascimento = input.nextLine();
+		System.out.print("Informe o cpf do jogador: ");
+		String cpf = input.next();
+		System.out.print("Informe o número da camisa do jogador: ");
+		int numero = input.nextInt();
+
+		Jogador jogador = new Jogador();
+		JogadorDAO jogadorDAO = new JogadorDAO();
+
+		int idPessoa = jogadorDAO.getNextId();
+
+		if (idPessoa > 0) {
+			jogadorDAO.inserirPessoaJogador(idPessoa, nome, dataNascimento, cpf);
+			jogadorDAO.inserirJogador(idPessoa, numero);
+		}
+		
+	}
 }

@@ -12,9 +12,7 @@ import model.Classificacao;
 public class ClassificacaoDAO {
 
 	public static List<Classificacao> getClassificacao(String nome) {
-		// String sql = "select * from Classificacao";
-		//int campeonatoId = 2; // Substitua pelo ID do campeonato desejado
-
+		
 		String sql = "SELECT t.idTime, t.nome AS Time, " + "COALESCE(SUM(CASE WHEN dp.Time_idTimeCasa = t.idTime THEN "
 				+ "CASE WHEN dp.golsCasa > dp.golsVisitante THEN 3 " + "WHEN dp.golsCasa = dp.golsVisitante THEN 1 "
 				+ "ELSE 0 END " + "ELSE " + "CASE WHEN dp.golsCasa < dp.golsVisitante THEN 3 "

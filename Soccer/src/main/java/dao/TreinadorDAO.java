@@ -35,7 +35,7 @@ public class TreinadorDAO {
 				String nomeTreinador = resultSet.getString("nome_treinador");
 				String nomeEquipe = resultSet.getString("nome_equipe");
 				Date dataNascimento = resultSet.getDate("data_nascimento");
-				String cpf = resultSet.getString("nome_equipe");
+				String cpf = resultSet.getString("cpf");
 
 				Treinador treinador = new Treinador(idPessoa1, nomeTreinador, nomeEquipe);
 				treinador.setCpf(cpf);
