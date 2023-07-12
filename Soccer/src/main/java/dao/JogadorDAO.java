@@ -76,8 +76,16 @@ public class JogadorDAO {
 				Date dataInicio = resultSet.getDate("data_inicio");
 				Date dataFim = resultSet.getDate("data_fim");
 
-				System.out.println("Nome do Atleta: " + nomeJogador + " - " + "Equipe: " + nomeEquipe + " - "
-						+ "Data Início: " + dataInicio + " - " + "Data Fim: " + dataFim + ".");
+				if (dataFim != null) {
+					System.out.println("Nome do Atleta: " + nomeJogador + " - " + "Equipe: " + nomeEquipe + " - "
+							+ "Data Início: " + dataInicio + " - " + "Data Fim: " + dataFim + ".");
+				}
+
+				else {
+					System.out.println("Nome do Atleta: " + nomeJogador + " - " + "Equipe: " + nomeEquipe + " - "
+							+ "Data Início: " + dataInicio + " - " + "Data Fim: Indefinido" );
+				}
+
 			}
 
 		} catch (SQLException e) {
