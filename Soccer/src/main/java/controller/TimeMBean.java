@@ -2,7 +2,6 @@ package controller;
 
 import java.util.Scanner;
 
-import dao.ClassificacaoDAO;
 import dao.TimeDAO;
 import model.Time;
 
@@ -30,7 +29,7 @@ public class TimeMBean {
 		if (time != null) {
 			System.out.println("Dados localizados com sucesso.");
 			System.out.println("Nome da Equipe: " + time.getNome());
-			System.out.println(" \n");
+			System.out.println("");
 		}
 
 		else {
@@ -56,6 +55,7 @@ public class TimeMBean {
 
 		if (time != null) {
 			timeDAO.getJogadoresByTime(equipe);
+			System.out.println("");
 		}
 
 		else {

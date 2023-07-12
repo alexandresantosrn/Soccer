@@ -24,27 +24,27 @@ VALUES (10, 'Virgil van Dijk', '01234567890', '1991-07-08');
 
 -- Pessoas do Time 3
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (11, 'Antoine Griezmann', '12345678901', '1991-03-21');
+VALUES (11, 'Antoine Griezmann', '04539887604', '1991-03-21');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (12, 'Manuel Neuer', '23456789012', '1986-03-27');
+VALUES (12, 'Manuel Neuer', '29875963410', '1986-03-27');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (13, 'Karim Benzema', '34567890123', '1987-12-19');
+VALUES (13, 'Karim Benzema', '71684520917', '1987-12-19');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (14, 'Jan Oblak', '45678901234', '1993-01-07');
+VALUES (14, 'Jan Oblak', '50329718425', '1993-01-07');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (15, 'Eden Hazard', '56789012345', '1991-01-07');
+VALUES (15, 'Eden Hazard', '62517492698', '1991-01-07');
 
 -- Pessoas do Time 4
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (16, 'Alisson Becker', '67890123456', '1992-10-02');
+VALUES (16, 'Alisson Becker', '12674038501', '1992-10-02');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (17, 'Sergio Agüero', '78901234567', '1988-06-02');
+VALUES (17, 'Sergio Agüero', '48026359760', '1988-06-02');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (18, 'Thiago Silva', '89012345678', '1984-09-22');
+VALUES (18, 'Thiago Silva', '95328607148', '1984-09-22');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (19, 'David Alaba', '90123456789', '1992-06-24');
+VALUES (19, 'David Alaba', '82713596002', '1992-06-24');
 INSERT INTO Pessoa (idPessoa, nome, cpf, data_nascimento)
-VALUES (20, 'Paul Pogba', '01234567890', '1993-03-15');
+VALUES (20, 'Paul Pogba', '32471869057', '1993-03-15');
 
 -- Inserir Treinadores
 INSERT INTO Pessoa (idPessoa, nome, data_nascimento, cpf)

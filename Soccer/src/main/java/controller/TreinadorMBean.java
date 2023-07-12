@@ -31,8 +31,10 @@ public class TreinadorMBean {
 		if (treinador != null) {
 			System.out.println("Dados localizados com sucesso.");
 			System.out.println("Nome do Treinador: " + treinador.getNome());
+			System.out.println("Data de Nascimento: " + treinador.getDataNascimento());
+			System.out.println("CPF: " + treinador.getCpf());
 			System.out.println("Equipe Atual: " + treinador.getTimeAtual());
-			System.out.println(" \n");
+			System.out.println("");
 		}
 
 		else {

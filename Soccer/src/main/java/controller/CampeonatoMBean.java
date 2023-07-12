@@ -35,7 +35,7 @@ public class CampeonatoMBean {
 			System.out.println("Dados localizados com sucesso.");
 			System.out.println("Nome do Campeonato: " + campeonato.getNome());
 			System.out.println("Média de Gols: " + mediaGols);
-			System.out.println(" \n");
+			System.out.println("");
 		}
 
 	}
@@ -60,7 +60,7 @@ public class CampeonatoMBean {
 
 		else {
 			campeonatoDAO.getArtilheirosCampeonato(nome);
-			System.out.println(" \n");
+			System.out.println("");
 		}
 
 	}
@@ -85,7 +85,7 @@ public class CampeonatoMBean {
 
 		else {
 			ClassificacaoDAO.getClassificacao(nome);
-			System.out.println(" \n");
+			System.out.println("");
 		}
 
 	}

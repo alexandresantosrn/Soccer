@@ -31,8 +31,10 @@ public class JogadorMBean {
 		if (jogador != null) {
 			System.out.println("Dados localizados com sucesso.");
 			System.out.println("Nome do Jogador: " + jogador.getNome());
+			System.out.println("Data de Nascimento: " + jogador.getDataNascimento());
+			System.out.println("CPF: " + jogador.getCpf());
 			System.out.println("Equipe Atual: " + jogador.getTimeAtual());
-			System.out.println(" \n");
+			System.out.println("");
 		}
 
 		else {
@@ -47,6 +49,7 @@ public class JogadorMBean {
 		System.out.print("Informe o nome do jogador: ");
 		String nome = input.nextLine();
 		realizarConsultaHistoricoAtleta(nome);
+		System.out.println("");
 	}
 
 	private static void realizarConsultaHistoricoAtleta(String nome) {
@@ -79,11 +82,11 @@ public class JogadorMBean {
 			System.out.println("Dados localizados com sucesso.");
 			System.out.println("Nome do Jogador: " + jogador.getNome());
 			System.out.println("Data de Nascimento: " + jogador.getDataNascimento());
-			System.out.print("Informe um novo nome para o atleta: " );
+			System.out.print("Informe um novo nome para o atleta: ");
 			String name = input.nextLine();
-			System.out.print("Informe uma nova data de nascimento para o atleta (Formato: AAAA-MM-DD): " );
+			System.out.print("Informe uma nova data de nascimento para o atleta (Formato: AAAA-MM-DD): ");
 			String dataNascimento = input.nextLine();
-			
+
 			JogadorDAO.atualizarJogador(jogador.getIdPessoa(), name, dataNascimento);
 		}
 

@@ -11,7 +11,7 @@ import model.Jogador;
 public class JogadorDAO {
 
 	public Jogador getJogadorByNomeTime(String nome, String equipe) {
-		String sql = "SELECT j.Pessoa_idPessoa as idPessoa, p.nome AS nome_jogador, t.nome AS nome_equipe "
+		String sql = "SELECT j.Pessoa_idPessoa as idPessoa, p.nome AS nome_jogador, p.data_nascimento as data_nascimento, p.cpf as cpf, t.nome AS nome_equipe "
 				+ "FROM Jogador j " + "INNER JOIN Pessoa p ON j.Pessoa_idPessoa = p.idPessoa "
 				+ "INNER JOIN Jogador_joga_time jjt ON j.Pessoa_idPessoa = jjt.jogador_Pessoa_idPessoa "
 				+ "INNER JOIN Time t ON jjt.Time_idTime = t.idTime " + "WHERE p.nome = ? " + "AND t.nome = ? "
@@ -32,10 +32,14 @@ public class JogadorDAO {
 			// Iterando sobre os resultados da consulta
 			while (resultSet.next()) {
 				int idPessoa1 = resultSet.getInt("idPessoa");
+				Date dataNascimento = resultSet.getDate("data_nascimento");
 				String nomeJogador = resultSet.getString("nome_jogador");
 				String nomeEquipe = resultSet.getString("nome_equipe");
+				String cpf = resultSet.getString("cpf");
 
 				Jogador jogador = new Jogador(idPessoa1, nomeJogador, nomeEquipe);
+				jogador.setDataNascimento(dataNascimento);
+				jogador.setCpf(cpf);
 
 				return jogador;
 			}
@@ -132,11 +136,11 @@ public class JogadorDAO {
 			pstm.setString(1, name); // nome
 			pstm.setString(2, dataNascimento);
 			pstm.setInt(3, idPessoa); // idPessoa
-			
+
 			pstm.executeUpdate();
-			
+
 			System.out.println("Dados atualizados com sucesso!");
-			System.out.println(" \n");
+			System.out.println("");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

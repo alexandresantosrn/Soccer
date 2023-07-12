@@ -31,7 +31,7 @@ public class LoginAuthentication {
 
 		if (organizador != null) {
 			System.out.println("Usuário: " + organizador.getLogin() + " autenticado com sucesso!");
-			System.out.println(" \n");
+			System.out.println("");
 			App.exibirMenu();
 		}
 
