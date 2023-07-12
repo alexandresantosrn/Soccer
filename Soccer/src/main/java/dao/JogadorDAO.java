@@ -134,7 +134,7 @@ public class JogadorDAO {
 
 			// Definindo os valores dos parâmetros
 			pstm.setString(1, name); // nome
-			pstm.setString(2, dataNascimento);
+			pstm.setString(2, dataNascimento); //data de nascimento
 			pstm.setInt(3, idPessoa); // idPessoa
 
 			pstm.executeUpdate();
