@@ -1,0 +1,323 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Pessoa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Pessoa` (
+  `idPessoa` INT NOT NULL,
+  `nome` VARCHAR(50) NOT NULL,
+  `data_nascimento` DATE NOT NULL,
+  `cpf` VARCHAR(11) NOT NULL,
+  PRIMARY KEY (`idPessoa`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Organizador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Organizador` (
+  `Pessoa_idPessoa` INT NOT NULL,
+  `login` VARCHAR(20) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Pessoa_idPessoa`),
+  INDEX `fk_Organizador_Pessoa1_idx` (`Pessoa_idPessoa` ASC) VISIBLE,
+  CONSTRAINT `fk_Organizador_Pessoa1`
+    FOREIGN KEY (`Pessoa_idPessoa`)
+    REFERENCES `mydb`.`Pessoa` (`idPessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Treinador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Treinador` (
+  `Pessoa_idPessoa` INT NOT NULL,
+  PRIMARY KEY (`Pessoa_idPessoa`),
+  INDEX `fk_Treinador_Pessoa1_idx` (`Pessoa_idPessoa` ASC) VISIBLE,
+  CONSTRAINT `fk_Treinador_Pessoa1`
+    FOREIGN KEY (`Pessoa_idPessoa`)
+    REFERENCES `mydb`.`Pessoa` (`idPessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Jogador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Jogador` (
+  `Pessoa_idPessoa` INT NOT NULL,
+  `numero_camisa` INT NOT NULL,
+  PRIMARY KEY (`Pessoa_idPessoa`),
+  INDEX `fk_Jogador_Pessoa1_idx` (`Pessoa_idPessoa` ASC) VISIBLE,
+  CONSTRAINT `fk_Jogador_Pessoa1`
+    FOREIGN KEY (`Pessoa_idPessoa`)
+    REFERENCES `mydb`.`Pessoa` (`idPessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Time`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Time` (
+  `idTime` INT NOT NULL,
+  `nome` VARCHAR(25) NOT NULL,
+  PRIMARY KEY (`idTime`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Treinador_treina_time`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Treinador_treina_time` (
+  `Treinador_Pessoa_idPessoa` INT NOT NULL,
+  `Time_idTime` INT NOT NULL,
+  `data_inicio` DATE NOT NULL,
+  `data_fim` DATE NULL,
+  PRIMARY KEY (`Treinador_Pessoa_idPessoa`, `Time_idTime`),
+  INDEX `fk_Treinador_treina_time_Time1_idx` (`Time_idTime` ASC) VISIBLE,
+  CONSTRAINT `fk_Treinador_treina_time_Treinador1`
+    FOREIGN KEY (`Treinador_Pessoa_idPessoa`)
+    REFERENCES `mydb`.`Treinador` (`Pessoa_idPessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Treinador_treina_time_Time1`
+    FOREIGN KEY (`Time_idTime`)
+    REFERENCES `mydb`.`Time` (`idTime`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Jogador_joga_time`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Jogador_joga_time` (
+  `Jogador_Pessoa_idPessoa` INT NOT NULL,
+  `Time_idTime` INT NOT NULL,
+  `data_inicio` DATE NOT NULL,
+  `data_fim` DATE NULL,
+  PRIMARY KEY (`Jogador_Pessoa_idPessoa`, `Time_idTime`),
+  INDEX `fk_Jogador_joga_time_Time1_idx` (`Time_idTime` ASC) VISIBLE,
+  CONSTRAINT `fk_Jogador_joga_time_Jogador1`
+    FOREIGN KEY (`Jogador_Pessoa_idPessoa`)
+    REFERENCES `mydb`.`Jogador` (`Pessoa_idPessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Jogador_joga_time_Time1`
+    FOREIGN KEY (`Time_idTime`)
+    REFERENCES `mydb`.`Time` (`idTime`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Campeonato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Campeonato` (
+  `idCampeonato` INT NOT NULL,
+  `Organizador_Pessoa_idPessoa` INT NOT NULL,
+  `nome` VARCHAR(25) NOT NULL,
+  PRIMARY KEY (`idCampeonato`),
+  INDEX `fk_Campeonato_Organizador1_idx` (`Organizador_Pessoa_idPessoa` ASC) VISIBLE,
+  CONSTRAINT `fk_Campeonato_Organizador1`
+    FOREIGN KEY (`Organizador_Pessoa_idPessoa`)
+    REFERENCES `mydb`.`Organizador` (`Pessoa_idPessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Rodada`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Rodada` (
+  `idRodada` INT NOT NULL,
+  `Campeonato_idCampeonato` INT NOT NULL,
+  `numero_rodada` INT NOT NULL,
+  `data_inicio` DATE NOT NULL,
+  `data_fim` DATE NOT NULL,
+  PRIMARY KEY (`idRodada`),
+  INDEX `fk_Rodada_Campeonato1_idx` (`Campeonato_idCampeonato` ASC) VISIBLE,
+  CONSTRAINT `fk_Rodada_Campeonato1`
+    FOREIGN KEY (`Campeonato_idCampeonato`)
+    REFERENCES `mydb`.`Campeonato` (`idCampeonato`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Status_Partida`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Status_Partida` (
+  `idStatus_Partida` INT NOT NULL,
+  `descricao` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`idStatus_Partida`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Estadio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Estadio` (
+  `idEstadio` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `Time_idTime` INT NOT NULL,
+  PRIMARY KEY (`idEstadio`),
+  INDEX `fk_Estádio_Time1_idx` (`Time_idTime` ASC) VISIBLE,
+  CONSTRAINT `fk_Estádio_Time1`
+    FOREIGN KEY (`Time_idTime`)
+    REFERENCES `mydb`.`Time` (`idTime`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Partida`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Partida` (
+  `idPartida` INT NOT NULL,
+  `Estadio_idEstadio` INT NOT NULL,
+  `Rodada_idRodada` INT NOT NULL,
+  `Status_Partida_idStatus_Partida` INT NOT NULL,
+  `data` DATE NOT NULL,
+  `hora_inicio` TIME NOT NULL,
+  `hora_fim` TIME NOT NULL,
+  PRIMARY KEY (`idPartida`),
+  INDEX `fk_Partida_Rodada1_idx` (`Rodada_idRodada` ASC) VISIBLE,
+  INDEX `fk_Partida_Status_Partida1_idx` (`Status_Partida_idStatus_Partida` ASC) VISIBLE,
+  INDEX `fk_Partida_Estadio1_idx` (`Estadio_idEstadio` ASC) VISIBLE,
+  CONSTRAINT `fk_Partida_Rodada1`
+    FOREIGN KEY (`Rodada_idRodada`)
+    REFERENCES `mydb`.`Rodada` (`idRodada`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Partida_Status_Partida1`
+    FOREIGN KEY (`Status_Partida_idStatus_Partida`)
+    REFERENCES `mydb`.`Status_Partida` (`idStatus_Partida`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Partida_Estadio1`
+    FOREIGN KEY (`Estadio_idEstadio`)
+    REFERENCES `mydb`.`Estadio` (`idEstadio`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Endereco_Estadio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Endereco_Estadio` (
+  `Estadio_idEstadio` INT NOT NULL,
+  `cep` VARCHAR(8) NOT NULL,
+  `rua` VARCHAR(45) NOT NULL,
+  `numero` INT NULL,
+  PRIMARY KEY (`Estadio_idEstadio`),
+  CONSTRAINT `fk_Endereco_Estadio_Estadio1`
+    FOREIGN KEY (`Estadio_idEstadio`)
+    REFERENCES `mydb`.`Estadio` (`idEstadio`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Gol`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Gol` (
+  `idGol` INT NOT NULL,
+  `Jogador_Pessoa_idPessoa` INT NOT NULL,
+  `Partida_idPartida` INT NOT NULL,
+  `tempo` INT NOT NULL,
+  `gol_contra` TINYINT NOT NULL,
+  PRIMARY KEY (`idGol`),
+  INDEX `fk_Gol_Partida1_idx` (`Partida_idPartida` ASC) VISIBLE,
+  CONSTRAINT `fk_Gol_Jogador1`
+    FOREIGN KEY (`Jogador_Pessoa_idPessoa`)
+    REFERENCES `mydb`.`Jogador` (`Pessoa_idPessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Gol_Partida1`
+    FOREIGN KEY (`Partida_idPartida`)
+    REFERENCES `mydb`.`Partida` (`idPartida`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Detalhes_Partida`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Detalhes_Partida` (
+  `Partida_idPartida` INT NOT NULL,
+  `Time_idTimeCasa` INT NOT NULL,
+  `Time_idTimeVisitante` INT NOT NULL,
+  `golsCasa` INT NULL,
+  `golsVisitante` INT NULL,
+  PRIMARY KEY (`Partida_idPartida`, `Time_idTimeCasa`, `Time_idTimeVisitante`),
+  INDEX `fk_Detalhes_Partida_Time1_idx` (`Time_idTimeCasa` ASC) VISIBLE,
+  INDEX `fk_Detalhes_Partida_Time2_idx` (`Time_idTimeVisitante` ASC) VISIBLE,
+  CONSTRAINT `fk_table1_Partida1`
+    FOREIGN KEY (`Partida_idPartida`)
+    REFERENCES `mydb`.`Partida` (`idPartida`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Detalhes_Partida_Time1`
+    FOREIGN KEY (`Time_idTimeCasa`)
+    REFERENCES `mydb`.`Time` (`idTime`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Detalhes_Partida_Time2`
+    FOREIGN KEY (`Time_idTimeVisitante`)
+    REFERENCES `mydb`.`Time` (`idTime`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Time_participa_Campeonato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Time_participa_Campeonato` (
+  `Time_idTime` INT NOT NULL,
+  `Campeonato_idCampeonato` INT NOT NULL,
+  PRIMARY KEY (`Time_idTime`, `Campeonato_idCampeonato`),
+  INDEX `fk_Time_joga_Campeonato_Campeonato1_idx` (`Campeonato_idCampeonato` ASC) VISIBLE,
+  CONSTRAINT `fk_Time_joga_Campeonato_Time1`
+    FOREIGN KEY (`Time_idTime`)
+    REFERENCES `mydb`.`Time` (`idTime`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Time_joga_Campeonato_Campeonato1`
+    FOREIGN KEY (`Campeonato_idCampeonato`)
+    REFERENCES `mydb`.`Campeonato` (`idCampeonato`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
